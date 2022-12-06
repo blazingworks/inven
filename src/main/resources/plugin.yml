@@ -1,4 +1,0 @@
-name: Inven
-version: '${project.version}'
-main: works.blazing.inven.Inven
-api-version: 1.19
