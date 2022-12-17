@@ -1,9 +1,33 @@
 plugins {
-    id 'java'
+    id 'java-library'
+    id 'signing'
+    id 'maven-publish'
 }
 
 group = 'works.blazing'
 version = '1.0.0'
+
+publishing {
+    repositories {
+        maven {
+            name = "blazingWorksRepository"
+            url = "https://maven.blazing.works/releases"
+            credentials(PasswordCredentials)
+            authentication {
+                basic(BasicAuthentication)
+            }
+        }
+    }
+    publications {
+        maven(MavenPublication) {
+            groupId = "works.blazing"
+            artifactId = 'inven'
+            version = '1.0.0'
+
+            from components.java
+        }
+    }
+}
 
 repositories {
     mavenCentral()
